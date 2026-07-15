@@ -6,7 +6,11 @@
   <meta name="description" content="Deepak Krishna - Senior Embedded/System Test Engineer with 8+ years of experience in HIL, SIL, and automotive testing." />
   <meta name="theme-color" content="#F0F9FF" />
   <title>Deepak Krishna · Embedded Test Engineer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -24,6 +28,8 @@
       --text-dark: #1E293B;
       --text-body: #475569;
       --text-muted: #64748B;
+      --text: #1E293B;
+      --body-text: #475569;
       --gradient: linear-gradient(135deg, #3B82F6, #06B6D4);
       --gradient-green: linear-gradient(135deg, #10B981, #059669);
     }
@@ -38,6 +44,11 @@
       color: var(--text-dark);
       line-height: 1.6;
       overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .logo, .stat-number, .section-header h2 {
+      font-family: 'Sora', 'Poppins', sans-serif;
+      letter-spacing: -0.01em;
     }
 
     /* Nav Bar */
@@ -66,6 +77,7 @@
       font-weight: 800;
       background: var(--gradient);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
@@ -129,6 +141,7 @@
     .hero-text .name {
       background: var(--gradient);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
@@ -205,8 +218,6 @@
       width: 20px;
       height: 20px;
     }
-      border: 2px solid var(--primary);
-    }
 
     .btn-secondary:hover {
       background: var(--primary);
@@ -230,6 +241,7 @@
       font-weight: 800;
       background: var(--gradient);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
       display: block;
     }
@@ -274,8 +286,6 @@
       font-weight: 600;
       box-shadow: 0 4px 15px rgba(59,130,246,0.3);
     }
-      margin-top: 1rem;
-    }
 
     /* Services Section */
     .services {
@@ -302,6 +312,7 @@
     .section-header .highlight {
       background: var(--gradient);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
@@ -360,6 +371,13 @@
       justify-content: center;
       font-size: 2rem;
       margin-bottom: 1.5rem;
+    }
+
+    .service-icon svg {
+      width: 36px;
+      height: 36px;
+      stroke: #FFFFFF;
+      fill: none;
     }
 
     .service-card h3 {
@@ -610,6 +628,13 @@
       flex-shrink: 0;
     }
 
+    .edu-icon svg {
+      width: 30px;
+      height: 30px;
+      stroke: #FFFFFF;
+      fill: none;
+    }
+
     .edu-content {
       flex: 1;
     }
@@ -741,6 +766,7 @@
     .contact-header .highlight {
       background: var(--gradient);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
@@ -937,8 +963,21 @@
       background: none;
       border: none;
       color: var(--text);
-      font-size: 1.5rem;
+      font-size: 1.6rem;
+      line-height: 1;
       cursor: pointer;
+      padding: 0.35rem 0.5rem;
+      border-radius: 10px;
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+
+    .mobile-menu-btn:hover {
+      background: rgba(59,130,246,0.1);
+    }
+
+    .mobile-menu-btn.active {
+      transform: rotate(90deg);
+      color: var(--primary);
     }
 
     /* Responsive Design */
@@ -980,7 +1019,45 @@
       }
 
       .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(12px);
+        padding: 0.5rem 0;
+        box-shadow: 0 12px 30px rgba(59,130,246,0.15);
+        border-top: 1px solid rgba(59,130,246,0.12);
+        transform: translateY(-12px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+      }
+
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 0.9rem 2rem;
+        border-radius: 0;
+      }
+
+      .nav-links a::after {
         display: none;
+      }
+
+      .nav-links a:hover {
+        background: rgba(59,130,246,0.08);
       }
 
       .education-list {
@@ -1091,6 +1168,64 @@
       .nav-container {
         padding: 0 1rem;
       }
+
+      /* Mobile polish */
+      .hero {
+        padding: 90px 1.25rem 3rem;
+        min-height: auto;
+      }
+
+      .hero-content {
+        gap: 2.5rem;
+      }
+
+      .services,
+      .portfolio,
+      .timeline-section,
+      .education-section,
+      .certifications-section,
+      .contact-section {
+        padding: 3.5rem 1.25rem;
+      }
+
+      .section-header {
+        margin-bottom: 2.5rem;
+      }
+
+      .service-card,
+      .cert-card,
+      .education-item-card,
+      .contact-item {
+        padding: 1.75rem;
+      }
+
+      /* Tone down decorative blobs for clarity + performance */
+      .hero-blob {
+        opacity: 0.3;
+        filter: blur(45px);
+      }
+      .hero-blob.blob1 { width: 200px; height: 200px; }
+      .hero-blob.blob2 { width: 180px; height: 180px; }
+      .hero-blob.blob3 { width: 160px; height: 160px; }
+
+      .hero-image::before {
+        width: 260px;
+        height: 260px;
+      }
+
+      /* Keep download CTA legible full-width */
+      .btn-download {
+        justify-content: center;
+      }
+
+      /* Comfortable tap targets */
+      .nav-links a {
+        padding: 1rem 1.5rem;
+      }
+
+      .scroll-cue {
+        display: none;
+      }
     }
 
 
@@ -1125,14 +1260,320 @@
     .scroll-top:hover {
       transform: translateY(-5px);
     }
+
+    /* ============================================================
+       ENGAGEMENT UPGRADE — animations & micro-interactions
+       ============================================================ */
+
+    /* Scroll progress bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
+      z-index: 2000;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 10px rgba(59,130,246,0.5);
+    }
+
+    /* Keyframes */
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-18px); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 20px 60px rgba(59,130,246,0.25); }
+      50% { box-shadow: 0 25px 70px rgba(6,182,212,0.45); }
+    }
+
+    @keyframes badgePulse {
+      0%, 100% { box-shadow: 0 4px 15px rgba(59,130,246,0.3); transform: translateY(0); }
+      50% { box-shadow: 0 8px 28px rgba(6,182,212,0.5); transform: translateY(-3px); }
+    }
+
+    @keyframes blobFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(40px, -30px) scale(1.1); }
+      66% { transform: translate(-30px, 25px) scale(0.95); }
+    }
+
+    @keyframes spinRing {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes bounceArrow {
+      0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+      50% { transform: translateX(-50%) translateY(12px); opacity: 0.5; }
+    }
+
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* Nav shrink on scroll */
+    nav.scrolled {
+      padding: 0.6rem 0;
+      background: rgba(255,255,255,0.85);
+      box-shadow: 0 4px 24px rgba(59,130,246,0.15);
+    }
+
+    .nav-links a {
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: var(--gradient);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a.active-link {
+      color: var(--primary);
+    }
+
+    .nav-links a.active-link::after {
+      width: 100%;
+    }
+
+    .logo {
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .logo:hover {
+      transform: scale(1.1) rotate(-3deg);
+    }
+
+    /* Animated gradient name */
+    .hero-text .name {
+      background: linear-gradient(135deg, #3B82F6, #06B6D4, #10B981, #3B82F6);
+      background-size: 300% 300%;
+      animation: gradientShift 8s ease infinite;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Hero entrance stagger (no HTML change) */
+    .hero-text > * {
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+    }
+    .hero-text > *:nth-child(1) { animation-delay: 0.15s; }
+    .hero-text > *:nth-child(2) { animation-delay: 0.30s; }
+    .hero-text > *:nth-child(3) { animation-delay: 0.45s; }
+    .hero-text > *:nth-child(4) { animation-delay: 0.60s; }
+    .hero-text > *:nth-child(5) { animation-delay: 0.75s; }
+
+    .hero-image {
+      opacity: 0;
+      animation: fadeInScale 1s ease 0.4s forwards, floatY 5s ease-in-out 1.4s infinite;
+    }
+
+    /* Profile pic glow ring */
+    .profile-pic {
+      animation: pulseGlow 4s ease-in-out infinite;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-image::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 380px;
+      height: 380px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--primary), var(--accent), var(--secondary), var(--primary));
+      filter: blur(28px);
+      opacity: 0.35;
+      z-index: 0;
+      animation: spinRing 12s linear infinite;
+    }
+
+    .badge {
+      animation: badgePulse 3.5s ease-in-out infinite;
+    }
+
+    /* Hero background blobs */
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.5;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-blob.blob1 {
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(59,130,246,0.5), transparent 70%);
+      top: 8%; left: -60px;
+      animation: blobFloat 14s ease-in-out infinite;
+    }
+    .hero-blob.blob2 {
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(16,185,129,0.4), transparent 70%);
+      bottom: 6%; left: 40%;
+      animation: blobFloat 18s ease-in-out infinite reverse;
+    }
+    .hero-blob.blob3 {
+      width: 260px; height: 260px;
+      background: radial-gradient(circle, rgba(6,182,212,0.4), transparent 70%);
+      top: 20%; right: 6%;
+      animation: blobFloat 16s ease-in-out infinite;
+    }
+
+    /* Scroll cue */
+    .scroll-cue {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeUp 1s ease 1.6s forwards;
+    }
+    .scroll-cue svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--primary);
+      animation: bounceArrow 1.8s ease-in-out infinite;
+    }
+
+    /* Button shine sweep */
+    .btn {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+      transform: skewX(-20deg);
+      transition: left 0.6s ease;
+    }
+    .btn:hover::after {
+      left: 140%;
+    }
+
+    /* Section header animated underline */
+    .section-header h2 {
+      position: relative;
+      display: inline-block;
+    }
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -12px;
+      width: 0;
+      height: 4px;
+      border-radius: 4px;
+      background: var(--gradient);
+      transform: translateX(-50%);
+      transition: width 0.6s ease;
+    }
+    .section-header.in-view h2::after {
+      width: 70px;
+    }
+
+    /* Reveal on scroll (JS-driven) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stat pop */
+    .stat-number {
+      transition: transform 0.3s ease;
+    }
+    .stat-card:hover .stat-number {
+      transform: scale(1.15);
+    }
+
+    /* Card icon wiggle on hover */
+    .service-card:hover .service-icon,
+    .education-item-card:hover .edu-icon {
+      animation: floatY 1.2s ease-in-out infinite;
+    }
+
+    .cert-card:hover .cert-badge {
+      transform: scale(1.12) rotate(6deg);
+      transition: transform 0.4s ease;
+    }
+    .cert-badge {
+      transition: transform 0.4s ease;
+    }
+
+    /* Contact icon float on hover */
+    .contact-icon-link:hover .contact-logo {
+      animation: floatY 1.2s ease-in-out infinite;
+    }
   </style>
 </head>
 <body>
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <!-- Navigation -->
   <nav>
     <div class="nav-container">
       <div class="logo">DK</div>
-      <ul class="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
@@ -1141,12 +1582,15 @@
         <li><a href="#certifications">Certifications</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button class="mobile-menu-btn">☰</button>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">☰</button>
     </div>
   </nav>
 
   <!-- Hero Section -->
   <section id="home" class="hero">
+    <div class="hero-blob blob1"></div>
+    <div class="hero-blob blob2"></div>
+    <div class="hero-blob blob3"></div>
     <div class="hero-content">
       <div class="hero-text">
         <h1><span style="font-size: 0.45em; font-weight: 500; display: block;">Hi, I'm</span> <span class="name">Deepak Krishna</span></h1>
@@ -1183,6 +1627,12 @@
         </div>
       </div>
     </div>
+    <a href="#about" class="scroll-cue" aria-label="Scroll down">
+      <span>Scroll</span>
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+      </svg>
+    </a>
   </section>
 
   <!-- About Section -->
@@ -1194,7 +1644,7 @@
       </div>
       <div style="max-width: 900px; margin: 0 auto; text-align: left;">
         <p style="font-size: 1.1rem; line-height: 1.9; color: var(--text-body); margin-bottom: 1.5rem;">
-          I'm an Automotive Test Engineer at BMW Techworks India with over 8+ years of experience specializing in automotive embedded systems. 
+          I'm an Automotive Test Engineer at BMW Techworks India with over 9+ years of experience specializing in automotive embedded systems. 
           My expertise spans HIL/SIL testing, Python automation, and diagnostic protocols for Body Control Modules and 
           automotive equipment controllers.
         </p>
@@ -1278,7 +1728,13 @@
       
       <div class="education-list">
         <div class="education-item-card">
-          <div class="edu-icon">🎓</div>
+          <div class="edu-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3L2 8l10 5 10-5-10-5z"/>
+              <path d="M6 10.5V16c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5.5"/>
+              <path d="M22 8v5"/>
+            </svg>
+          </div>
           <div class="edu-content">
             <div class="education-year">2017 - 2020</div>
             <h4 class="education-title">B.Tech in Mechatronics</h4>
@@ -1287,7 +1743,12 @@
         </div>
         
         <div class="education-item-card">
-          <div class="edu-icon">📚</div>
+          <div class="edu-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 5a2 2 0 012-2h6v16H6a2 2 0 00-2 2V5z"/>
+              <path d="M20 5a2 2 0 00-2-2h-6v16h6a2 2 0 012 2V5z"/>
+            </svg>
+          </div>
           <div class="edu-content">
             <div class="education-year">2014 - 2017</div>
             <h4 class="education-title">Diploma in Mechatronics</h4>
@@ -1296,7 +1757,12 @@
         </div>
         
         <div class="education-item-card">
-          <div class="edu-icon">📖</div>
+          <div class="edu-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+              <path d="M6.5 3H20v18H6.5A2.5 2.5 0 014 18.5v-13A2.5 2.5 0 016.5 3z"/>
+            </svg>
+          </div>
           <div class="edu-content">
             <div class="education-year">2014</div>
             <h4 class="education-title">Secondary Education</h4>
@@ -1316,7 +1782,13 @@
       </div>
       <div class="service-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
         <div class="service-card">
-          <div class="service-icon">🔧</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 4h6a1 1 0 011 1v1a1 1 0 01-1 1H9a1 1 0 01-1-1V5a1 1 0 011-1z"/>
+              <path d="M8 6H6a2 2 0 00-2 2v11a2 2 0 002 2h12a2 2 0 002-2V8a2 2 0 00-2-2h-2"/>
+              <path d="M9 13l2 2 4-4"/>
+            </svg>
+          </div>
           <h3>Testing Methodologies</h3>
           <ul style="list-style: none; padding: 0; color: var(--text-body);">
             <li style="padding: 0.4rem 0;">✓ HIL & SIL Testing (Open/Closed Loop)</li>
@@ -1326,7 +1798,13 @@
           </ul>
         </div>
         <div class="service-card">
-          <div class="service-icon">🐍</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 6l-5 6 5 6"/>
+              <path d="M16 6l5 6-5 6"/>
+              <path d="M13.5 4l-3 16"/>
+            </svg>
+          </div>
           <h3>Programming & Tools</h3>
           <ul style="list-style: none; padding: 0; color: var(--text-body);">
             <li style="padding: 0.4rem 0;">✓ Python (Test Automation)</li>
@@ -1336,7 +1814,15 @@
           </ul>
         </div>
         <div class="service-card">
-          <div class="service-icon">📡</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="2"/>
+              <path d="M8.5 8.5a5 5 0 000 7"/>
+              <path d="M15.5 8.5a5 5 0 010 7"/>
+              <path d="M5.6 5.6a9 9 0 000 12.8"/>
+              <path d="M18.4 5.6a9 9 0 010 12.8"/>
+            </svg>
+          </div>
           <h3>Protocols & Diagnostics</h3>
           <ul style="list-style: none; padding: 0; color: var(--text-body);">
             <li style="padding: 0.4rem 0;">✓ CAN, LIN, J1939, UDS</li>
@@ -1346,7 +1832,12 @@
           </ul>
         </div>
         <div class="service-card">
-          <div class="service-icon">⚙️</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="14" rx="2"/>
+              <path d="M6 12h3l1.5-4 3 8 1.5-4H18"/>
+            </svg>
+          </div>
           <h3>Test Equipment</h3>
           <ul style="list-style: none; padding: 0; color: var(--text-body);">
             <li style="padding: 0.4rem 0;">✓ Oscilloscope</li>
@@ -1356,7 +1847,13 @@
           </ul>
         </div>
         <div class="service-card">
-          <div class="service-icon">💻</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="12" rx="2"/>
+              <path d="M8 20h8"/>
+              <path d="M12 16v4"/>
+            </svg>
+          </div>
           <h3>Operating Systems</h3>
           <ul style="list-style: none; padding: 0; color: var(--text-body);">
             <li style="padding: 0.4rem 0;">✓ Windows</li>
@@ -1365,7 +1862,13 @@
           </ul>
         </div>
         <div class="service-card">
-          <div class="service-icon">🛠️</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="16" rx="2"/>
+              <path d="M7 9l3 3-3 3"/>
+              <path d="M13 15h4"/>
+            </svg>
+          </div>
           <h3>Development Tools & IDE</h3>
           <ul style="list-style: none; padding: 0; color: var(--text-body);">
             <li style="padding: 0.4rem 0;">✓ VS Code</li>
@@ -1375,7 +1878,14 @@
           </ul>
         </div>
         <div class="service-card">
-          <div class="service-icon">🎓</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+              <path d="M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
           <h3>Soft Skills</h3>
           <ul style="list-style: none; padding: 0; color: var(--text-body);">
             <li style="padding: 0.4rem 0;">✓ Team Leadership</li>
@@ -1407,8 +1917,6 @@
           <h4 class="cert-title">Introduction to Generative AI</h4>
           <p class="cert-issuer">Duke University</p>
         </div>
-      
-      <div class="cert-grid">
         <div class="cert-card">
           <div class="cert-badge">
             <svg class="cert-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1556,26 +2064,121 @@ Work: Pune, MH">
 
     // Intersection Observer for fade-in animations
     const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      threshold: 0.12,
+      rootMargin: '0px 0px -60px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    // Animate elements on scroll
-    document.querySelectorAll('.service-card, .timeline-item, .education-item-card, .cert-card').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    // Staggered reveal for cards & timeline
+    document.querySelectorAll('.service-card, .timeline-item, .education-item-card, .cert-card').forEach((el, i) => {
+      el.classList.add('reveal');
+      el.style.transitionDelay = (i % 4) * 0.1 + 's';
       observer.observe(el);
     });
+
+    // Reveal section headers (animated underline)
+    document.querySelectorAll('.section-header').forEach(el => observer.observe(el));
+
+    // Animated stat counters
+    const animateCount = (el) => {
+      const raw = el.textContent.trim();
+      const suffix = raw.replace(/[0-9.]/g, '');
+      const target = parseFloat(raw);
+      if (isNaN(target)) return;
+      let start = 0;
+      const duration = 1400;
+      const startTime = performance.now();
+      const step = (now) => {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          statObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-number').forEach(el => statObserver.observe(el));
+
+    // Scroll progress bar + nav shrink
+    const scrollProgress = document.getElementById('scrollProgress');
+    const navBar = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      scrollProgress.style.width = pct + '%';
+      navBar.classList.toggle('scrolled', scrollTop > 40);
+    }, { passive: true });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    const closeMenu = () => {
+      navLinks.classList.remove('open');
+      mobileMenuBtn.classList.remove('active');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      mobileMenuBtn.textContent = '☰';
+    };
+
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navLinks.classList.toggle('open');
+      mobileMenuBtn.classList.toggle('active', isOpen);
+      mobileMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      mobileMenuBtn.textContent = isOpen ? '✕' : '☰';
+    });
+
+    // Close menu when a link is tapped
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close menu when tapping outside
+    document.addEventListener('click', (e) => {
+      if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && e.target !== mobileMenuBtn) {
+        closeMenu();
+      }
+    });
+
+    // Close menu on resize to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 968) closeMenu();
+    });
+
+    // Scroll-spy: highlight active nav link
+    const sections = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+
+    const spyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navAnchors.forEach(a => {
+            a.classList.toggle('active-link', a.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+    sections.forEach(s => spyObserver.observe(s));
   </script>
 </body>
 </html>
