@@ -396,6 +396,73 @@
       background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 50%, #DBEAFE 100%);
     }
 
+    /* Insights Carousel */
+    .insights-carousel {
+      position: relative;
+    }
+
+    .insights-track {
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 0.5rem 0.25rem 1.25rem;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .insights-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .insights-track .service-card {
+      flex: 0 0 340px;
+      max-width: 340px;
+      scroll-snap-align: start;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: none;
+      background: var(--bg-white);
+      color: var(--primary);
+      box-shadow: 0 4px 16px rgba(59,130,246,0.28);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      transition: background 0.3s, color 0.3s, transform 0.3s;
+    }
+
+    .carousel-btn svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      fill: none;
+    }
+
+    .carousel-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .carousel-btn.prev { left: -14px; }
+    .carousel-btn.next { right: -14px; }
+
+    @media (max-width: 640px) {
+      .insights-track .service-card { flex-basis: 82%; max-width: 82%; }
+      .carousel-btn.prev { left: -6px; }
+      .carousel-btn.next { right: -6px; }
+    }
+
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -1576,7 +1643,9 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#insights">Insights</a></li>
         <li><a href="#experience">Experience</a></li>
+        <li><a href="#achievements">Achievements</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#certifications">Certifications</a></li>
@@ -1594,7 +1663,7 @@
     <div class="hero-content">
       <div class="hero-text">
         <h1><span style="font-size: 0.45em; font-weight: 500; display: block;">Hi, I'm</span> <span class="name">Deepak Krishna</span></h1>
-        <h2>Automotive Test Engineer</h2>
+        <h2>Automotive Test Lead</h2>
         <p class="tagline">
           Specializing in system-level testing, automation, and diagnostic protocols for automotive embedded systems. 
           Transforming complex test requirements into reliable, automated solutions.
@@ -1644,19 +1713,83 @@
       </div>
       <div style="max-width: 900px; margin: 0 auto; text-align: left;">
         <p style="font-size: 1.1rem; line-height: 1.9; color: var(--text-body); margin-bottom: 1.5rem;">
-          I'm an Automotive Test Engineer at BMW Techworks India with over 9+ years of experience specializing in automotive embedded systems. 
-          My expertise spans HIL/SIL testing, Python automation, and diagnostic protocols for Body Control Modules and 
-          automotive equipment controllers.
+          My fascination with engineering started with science fiction and a love for cars. When I saw the mechatronics syllabus—robotics, pneumatics, hydraulics, and controllers—I knew exactly what I wanted to do. Today, as an Automotive Test Engineer, I get to do what I love most: look under the hood of complex vehicles and understand exactly how their embedded brains work.
         </p>
         <p style="font-size: 1.1rem; line-height: 1.9; color: var(--text-body); margin-bottom: 1.5rem;">
-          Throughout my career at Hella India, John Deere India, and now BMW Techworks, I've developed robust automated test frameworks, 
-          executed comprehensive system testing for Mercedes-Benz BCMs, and led knowledge-sharing initiatives for team members. 
-          I hold 5 professional certifications including ISTQB Advanced Test Manager and Python Zero to Hero Bootcamp from Udemy.
+          With over 9 years of experience across BMW Techworks, John Deere, and Hella, my expertise spans HIL/SIL testing, Python automation, and diagnostic protocols (UDS, CAN) for Body Control Modules and Gateway Controllers.
         </p>
         <p style="font-size: 1.1rem; line-height: 1.9; color: var(--text-body);">
-          I'm looking for challenging opportunities where I can contribute as an innovative problem solver, 
-          combining technical expertise with leadership skills to deliver high-quality testing solutions.
+          I don't just execute tests; I build frameworks that make testing smarter. Whether it is unifying SIL and HIL environments or designing modular architectures for multi-variant vehicles, my goal is to transform complex test requirements into reliable, automated, and scalable solutions.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Insights Section -->
+  <section id="insights" class="portfolio">
+    <div class="container">
+      <div class="section-header">
+        <h2>Ideas &amp; <span class="highlight">Insights</span></h2>
+        <p>My opinions and lessons on testing, automation, AI, process, and engineering leadership</p>
+      </div>
+      <div class="insights-carousel">
+        <button class="carousel-btn prev" type="button" aria-label="Previous insights" onclick="document.getElementById('insightsTrack').scrollBy({left:-372,behavior:'smooth'})">
+          <svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="insights-track" id="insightsTrack">
+        <a href="insights.html#ai-in-automotive-testing" class="service-card" style="text-decoration: none; color: inherit; display: block;">
+          <span style="display:inline-block; background: linear-gradient(135deg, #06B6D4, #0EA5E9); color:#fff; font-size:0.72rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; padding:0.35rem 0.9rem; border-radius:50px; margin-bottom:1.2rem;">AI in Testing</span>
+          <h3>AI in Automotive Testing: Hype, Help &amp; Fit</h3>
+          <p style="color: var(--text-body); line-height: 1.8;">Where AI actually helps in automotive testing&mdash;and where blind trust is dangerous. My take: a co-pilot that accelerates engineers without lowering the bar on rigor.</p>
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-top:1.2rem;">
+            <span style="color: var(--text-muted); font-size:0.8rem;">Jul 14, 2026</span>
+            <span style="color: var(--primary); font-weight:600;">Read full post &rarr;</span>
+          </div>
+        </a>
+        <!-- Insight: Leadership -->
+        <a href="insights.html#never-the-hot-seat" class="service-card" style="text-decoration: none; color: inherit; display: block;">
+          <span style="display:inline-block; background: linear-gradient(135deg, #6366F1, #8B5CF6); color:#fff; font-size:0.72rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; padding:0.35rem 0.9rem; border-radius:50px; margin-bottom:1.2rem;">Leadership &amp; Mentorship</span>
+          <h3>Never Put a New Engineer in the Hot Seat</h3>
+          <p style="color: var(--text-body); line-height: 1.8;">Technical skills can be taught, but team dynamics and clear expectations must be built. How I onboard engineers onto complex embedded projects&mdash;starting with connection, not pressure.</p>
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-top:1.2rem;">
+            <span style="color: var(--text-muted); font-size:0.8rem;">May 19, 2026</span>
+            <span style="color: var(--primary); font-weight:600;">Read full post &rarr;</span>
+          </div>
+        </a>
+        <!-- Insight: ASPICE -->
+        <a href="insights.html#aspice-not-paperwork" class="service-card" style="text-decoration: none; color: inherit; display: block;">
+          <span style="display:inline-block; background: linear-gradient(135deg, #F59E0B, #F97316); color:#fff; font-size:0.72rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; padding:0.35rem 0.9rem; border-radius:50px; margin-bottom:1.2rem;">Process &amp; ASPICE</span>
+          <h3>Why ASPICE Isn't Just Paperwork</h3>
+          <p style="color: var(--text-body); line-height: 1.8;">Process often feels like overhead&mdash;until it saves you. Why traceability from requirement to test to defect is an enabler, not a blocker, in day-to-day engineering.</p>
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-top:1.2rem;">
+            <span style="color: var(--text-muted); font-size:0.8rem;">Apr 8, 2026</span>
+            <span style="color: var(--primary); font-weight:600;">Read full post &rarr;</span>
+          </div>
+        </a>
+        <!-- Insight: Automation -->
+        <a href="insights.html#automation-is-a-product" class="service-card" style="text-decoration: none; color: inherit; display: block;">
+          <span style="display:inline-block; background: var(--gradient-green); color:#fff; font-size:0.72rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; padding:0.35rem 0.9rem; border-radius:50px; margin-bottom:1.2rem;">Automation</span>
+          <h3>Automation Is a Product, Not a Script</h3>
+          <p style="color: var(--text-body); line-height: 1.8;">Teams often treat automation as throwaway scripts. I treat frameworks as products&mdash;maintainable, documented, and built to serve an entire team, not just one test run.</p>
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-top:1.2rem;">
+            <span style="color: var(--text-muted); font-size:0.8rem;">Feb 23, 2026</span>
+            <span style="color: var(--primary); font-weight:600;">Read full post &rarr;</span>
+          </div>
+        </a>
+        <!-- Insight: Testing -->
+        <a href="insights.html#testing-over-development" class="service-card" style="text-decoration: none; color: inherit; display: block;">
+          <span style="display:inline-block; background: var(--gradient); color:#fff; font-size:0.72rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; padding:0.35rem 0.9rem; border-radius:50px; margin-bottom:1.2rem;">Testing</span>
+          <h3>Why I Chose Testing Over Development</h3>
+          <p style="color: var(--text-body); line-height: 1.8;">The highest-leverage place I could stand wasn't writing a feature&mdash;it was guaranteeing the whole system could be trusted. My philosophy: test smarter, not just more.</p>
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-top:1.2rem;">
+            <span style="color: var(--text-muted); font-size:0.8rem;">Jan 12, 2026</span>
+            <span style="color: var(--primary); font-weight:600;">Read full post &rarr;</span>
+          </div>
+        </a>
+        </div>
+        <button class="carousel-btn next" type="button" aria-label="Next insights" onclick="document.getElementById('insightsTrack').scrollBy({left:372,behavior:'smooth'})">
+          <svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
       </div>
     </div>
   </section>
@@ -1674,14 +1807,14 @@
             <img src="bmw-logo.png.png?v=2" alt="BMW Logo" class="company-logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23F0F9FF%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2232%22 fill=%22%233B82F6%22 font-weight=%22bold%22%3EBMW%3C/text%3E%3C/svg%3E'">
             <div class="timeline-date">March 2025 – Present</div>
             <h3>BMW Techworks India Pvt Ltd</h3>
-            <h4>Automotive Test Engineer</h4>
+            <h4>Validation Test Lead</h4>
             <ul>
-              <li>Requirement analysis of gateway controller component and component architecture specifications</li>
-              <li>Test specification creation for gateway controller feature and feature architecture aligned with SWE.5 standards</li>
-              <li>Test case creation for component, component architecture, feature, and feature architecture requirements</li>
-              <li>Test execution for SWE.6 verification and validation of gateway controller systems</li>
-              <li>Test reporting, defect tracking, and documentation for gateway controller component and feature testing</li>
-              <li>Defining and guiding team with ASPICE process</li>
+              <li>Analyzed gateway controller component and component architecture specification requirements</li>
+              <li>Created test specifications for gateway controller features and feature architecture, aligned with SWE.5 and SWE.6 as per ISO 26262 standards</li>
+              <li>Wrote test cases covering component, component architecture, feature, and feature architecture requirements</li>
+              <li>Executed SWE.5 & SWE.6 verification and validation of gateway controller systems</li>
+              <li>Handled test reporting, defect tracking, and documentation for gateway controller component and feature testing</li>
+              <li>Defined and guided the team through the ASPICE process</li>
             </ul>
           </div>
         </div>
@@ -1692,11 +1825,11 @@
             <h3>John Deere India Pvt Ltd</h3>
             <h4>Test Automotive Engineer</h4>
             <ul>
-              <li>Executed automated test scripts in Python</li>
-              <li>Owned complete defect lifecycle management</li>
-              <li>Reviewed and approved automation scripts via Git</li>
-              <li>Led knowledge sharing for new team members</li>
-              <li>Developed automation frameworks for efficiency</li>
+              <li>Executed automated test scripts in Python to validate vehicle controllers</li>
+              <li>Owned the complete defect lifecycle, from logging through to closure</li>
+              <li>Reviewed and approved team automation scripts through Git</li>
+              <li>Led knowledge-sharing sessions to onboard new team members</li>
+              <li>Improved the efficiency of the existing automation framework</li>
             </ul>
           </div>
         </div>
@@ -1707,12 +1840,57 @@
             <h3>Hella India Automotive Pvt Ltd</h3>
             <h4>System Test Engineer</h4>
             <ul>
-              <li>Developed & executed test plans and scripts for Mercedes-Benz BCMs</li>
-              <li>Ensured test bench integrity through validation</li>
-              <li>Analyzed diagnostic functionalities (IOCTRL, DTC)</li>
-              <li>Maintained traceability matrices for compliance</li>
+              <li>Developed and executed test plans and scripts for Mercedes-Benz Body Control Modules</li>
+              <li>Validated test bench integrity to ensure reliable, repeatable results</li>
+              <li>Analyzed diagnostic functionalities such as IOCTRL and DTC handling</li>
+              <li>Maintained traceability matrices to ensure requirement compliance</li>
             </ul>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Achievements Section -->
+  <section id="achievements" class="services">
+    <div class="container">
+      <div class="section-header">
+        <h2>Technical <span class="highlight">Achievements</span></h2>
+        <p>Architecting scalable solutions for complex embedded systems</p>
+      </div>
+
+      <div class="service-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem;">
+        <!-- Achievement 1 -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7" rx="1"/>
+              <rect x="14" y="3" width="7" height="7" rx="1"/>
+              <rect x="3" y="14" width="7" height="7" rx="1"/>
+              <rect x="14" y="14" width="7" height="7" rx="1"/>
+            </svg>
+          </div>
+          <h3>Modular Test Architecture for Multi-Variant Off-Road Vehicles</h3>
+          <p style="color: var(--text-body); line-height: 1.8; margin-bottom: 0.75rem;"><strong style="color: var(--text-dark);">The Challenge:</strong> Testing agricultural machinery is highly complex because a single machine can have 10-15 different variants. Maintaining a separate test case for every variant led to massive overhead.</p>
+          <p style="color: var(--text-body); line-height: 1.8; margin-bottom: 0.75rem;"><strong style="color: var(--text-dark);">The Solution:</strong> I designed a modular testing methodology. Instead of writing variant-specific scripts, I upgraded the framework and restructured the design to create a single, dynamic test case capable of handling all variants.</p>
+          <p style="color: var(--text-body); line-height: 1.8;"><strong style="color: var(--text-dark);">The Outcome:</strong> This drastically reduced script maintenance and increased efficiency. The architecture was highly appreciated by leadership and adopted across various other projects.</p>
+        </div>
+
+        <!-- Achievement 2 -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 7h6a2 2 0 012 2v9"/>
+              <path d="M20 7h-6a2 2 0 00-2 2"/>
+              <circle cx="4" cy="7" r="2"/>
+              <circle cx="20" cy="7" r="2"/>
+              <circle cx="12" cy="20" r="2"/>
+            </svg>
+          </div>
+          <h3>Unifying SIL and HIL Test Frameworks</h3>
+          <p style="color: var(--text-body); line-height: 1.8; margin-bottom: 0.75rem;"><strong style="color: var(--text-dark);">The Challenge:</strong> Our SIL and HIL environments were completely siloed, using different frameworks and test cases, creating immense complexity in maintaining two separate testing ecosystems.</p>
+          <p style="color: var(--text-body); line-height: 1.8; margin-bottom: 0.75rem;"><strong style="color: var(--text-dark);">The Solution:</strong> I led the integration of the SIL framework directly into the HIL environment by tapping the real HIL communication bus and connecting it to the virtual bus using existing CAN libraries. The SIL environment runs continuously, but the specific virtual ECU tested is disabled and seamlessly replaced by the real hardware communication of the DUT.</p>
+          <p style="color: var(--text-body); line-height: 1.8;"><strong style="color: var(--text-dark);">The Outcome:</strong> True end-to-end system testing. We can now run the exact same test cases across both HIL and SIL environments simply by changing the target, eliminating duplicate scripts.</p>
         </div>
       </div>
     </div>
@@ -1778,7 +1956,7 @@
     <div class="container">
       <div class="section-header">
         <h2>Technical <span class="highlight">Skills</span></h2>
-        <p>Comprehensive expertise in embedded systems testing and automation</p>
+        <p>A categorized breakdown of my testing methodologies, HIL platforms, tools, and equipment</p>
       </div>
       <div class="service-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
         <div class="service-card">
@@ -1800,17 +1978,33 @@
         <div class="service-card">
           <div class="service-icon">
             <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="4" width="16" height="16" rx="2"/>
+              <rect x="9" y="9" width="6" height="6"/>
+              <path d="M9 1v3"/><path d="M15 1v3"/><path d="M9 20v3"/><path d="M15 20v3"/>
+              <path d="M20 9h3"/><path d="M20 14h3"/><path d="M1 9h3"/><path d="M1 14h3"/>
+            </svg>
+          </div>
+          <h3>HIL Platforms</h3>
+          <ul style="list-style: none; padding: 0; color: var(--text-body);">
+            <li style="padding: 0.4rem 0;">✓ NI (National Instruments)</li>
+            <li style="padding: 0.4rem 0;">✓ Aliaro</li>
+            <li style="padding: 0.4rem 0;">✓ ETAS</li>
+            <li style="padding: 0.4rem 0;">✓ dSPACE</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M8 6l-5 6 5 6"/>
               <path d="M16 6l5 6-5 6"/>
               <path d="M13.5 4l-3 16"/>
             </svg>
           </div>
-          <h3>Programming & Tools</h3>
+          <h3>Programming & Automation</h3>
           <ul style="list-style: none; padding: 0; color: var(--text-body);">
             <li style="padding: 0.4rem 0;">✓ Python (Test Automation)</li>
-            <li style="padding: 0.4rem 0;">✓ Git, GitHub, Fork</li>
-            <li style="padding: 0.4rem 0;">✓ ECU-Test, CANoe</li>
-            <li style="padding: 0.4rem 0;">✓ IBM DOORS, PTC, Rally</li>
+            <li style="padding: 0.4rem 0;">✓ Selenium</li>
+            <li style="padding: 0.4rem 0;">✓ Squish</li>
           </ul>
         </div>
         <div class="service-card">
@@ -1829,6 +2023,36 @@
             <li style="padding: 0.4rem 0;">✓ IOCTRL, DTC Analysis</li>
             <li style="padding: 0.4rem 0;">✓ Diagnostic Testing</li>
             <li style="padding: 0.4rem 0;">✓ Traceability Matrices</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          <h3>Test Tools & ALM</h3>
+          <ul style="list-style: none; padding: 0; color: var(--text-body);">
+            <li style="padding: 0.4rem 0;">✓ ECU-Test, CANoe</li>
+            <li style="padding: 0.4rem 0;">✓ IBM DOORS, Codebeamer</li>
+            <li style="padding: 0.4rem 0;">✓ PTC, Rally, JIRA</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="6" cy="6" r="3"/>
+              <circle cx="6" cy="18" r="3"/>
+              <circle cx="18" cy="8" r="3"/>
+              <path d="M18 11a6 6 0 01-6 6H9"/>
+              <path d="M6 9v6"/>
+            </svg>
+          </div>
+          <h3>Version Control & IDE</h3>
+          <ul style="list-style: none; padding: 0; color: var(--text-body);">
+            <li style="padding: 0.4rem 0;">✓ Git, GitHub, Fork</li>
+            <li style="padding: 0.4rem 0;">✓ VS Code</li>
+            <li style="padding: 0.4rem 0;">✓ Sublime Text 3</li>
           </ul>
         </div>
         <div class="service-card">
@@ -1854,25 +2078,9 @@
               <path d="M12 16v4"/>
             </svg>
           </div>
-          <h3>Operating Systems</h3>
+          <h3>OS & Productivity</h3>
           <ul style="list-style: none; padding: 0; color: var(--text-body);">
-            <li style="padding: 0.4rem 0;">✓ Windows</li>
-            <li style="padding: 0.4rem 0;">✓ Linux</li>
-            <li style="padding: 0.4rem 0;">✓ macOS</li>
-          </ul>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="16" rx="2"/>
-              <path d="M7 9l3 3-3 3"/>
-              <path d="M13 15h4"/>
-            </svg>
-          </div>
-          <h3>Development Tools & IDE</h3>
-          <ul style="list-style: none; padding: 0; color: var(--text-body);">
-            <li style="padding: 0.4rem 0;">✓ VS Code</li>
-            <li style="padding: 0.4rem 0;">✓ Sublime Text</li>
+            <li style="padding: 0.4rem 0;">✓ Windows, Linux, macOS</li>
             <li style="padding: 0.4rem 0;">✓ MS Office Suite</li>
             <li style="padding: 0.4rem 0;">✓ Product Data Management (PDM)</li>
           </ul>
