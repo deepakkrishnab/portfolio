@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ideas & Insights by Deepak Krishna - opinions and lessons on testing, automation, and engineering leadership." />
+  <meta name="theme-color" content="#F0F9FF" />
+  <title>Ideas &amp; Insights · Deepak Krishna</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #3B82F6;
+      --secondary: #10B981;
+      --accent: #06B6D4;
+      --bg-light: #F0F9FF;
+      --bg-white: #FFFFFF;
+      --bg-card: #F8FAFC;
+      --text-dark: #1E293B;
+      --text-body: #475569;
+      --text-muted: #64748B;
+      --gradient: linear-gradient(135deg, #3B82F6, #06B6D4);
+      --gradient-green: linear-gradient(135deg, #10B981, #059669);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .logo {
+      font-family: 'Sora', 'Poppins', sans-serif;
+      letter-spacing: -0.01em;
+    }
+
+    /* Nav Bar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .nav-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Header */
+    .insights-header {
+      padding: 140px 2rem 3rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--bg-light) 0%, #E0F2FE 50%, #DBEAFE 100%);
+    }
+
+    .insights-header h1 {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .insights-header h1 .highlight {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .insights-header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Articles */
+    .articles {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    .article {
+      background: var(--bg-white);
+      border: 1px solid rgba(59,130,246,0.12);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 6px 24px rgba(59,130,246,0.06);
+      scroll-margin-top: 100px;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .article:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 44px rgba(59,130,246,0.13);
+    }
+
+    .tag {
+      display: inline-block;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      margin-bottom: 1.2rem;
+    }
+
+    .tag-testing { background: var(--gradient); }
+    .tag-automation { background: var(--gradient-green); }
+    .tag-leadership { background: linear-gradient(135deg, #6366F1, #8B5CF6); }
+    .tag-ai { background: linear-gradient(135deg, #06B6D4, #0EA5E9); }
+    .tag-process { background: linear-gradient(135deg, #F59E0B, #F97316); }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 0.9rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 1.6rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid rgba(59,130,246,0.1);
+    }
+
+    .article-meta .author {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .article-meta .avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--gradient);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .article-meta .dot {
+      color: rgba(100,116,139,0.45);
+    }
+
+    /* Floating back button */
+    .floating-back {
+      position: fixed;
+      left: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1100;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--gradient);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(59,130,246,0.35);
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .floating-back:hover {
+      transform: translateY(-50%) scale(1.12);
+      box-shadow: 0 10px 28px rgba(59,130,246,0.5);
+    }
+
+    .floating-back svg {
+      width: 24px;
+      height: 24px;
+      stroke: #fff;
+      fill: none;
+    }
+
+    .article h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+      line-height: 1.25;
+    }
+
+    .article p {
+      color: var(--text-body);
+      font-size: 1.08rem;
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+    }
+
+    .article p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      background: var(--bg-white);
+      border-top: 1px solid rgba(59,130,246,0.1);
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { gap: 1.2rem; }
+      .article { padding: 1.75rem; }
+      .floating-back { left: 12px; width: 44px; height: 44px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html#insights" class="floating-back" title="Back to portfolio" aria-label="Back to portfolio">
+    <svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 18l-6-6 6-6"/>
+    </svg>
+  </a>
+
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">DK</a>
+      <ul class="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="insights-header">
+    <a href="index.html#insights" class="back-link">&larr; Back to portfolio</a>
+    <h1>Ideas &amp; <span class="highlight">Insights</span></h1>
+    <p>Opinions and lessons from the world of testing, automation, and engineering leadership.</p>
+  </header>
+
+  <main class="articles">
+    <!-- Post 1 -->
+    <article id="ai-in-automotive-testing" class="article">
+      <span class="tag tag-ai">AI in Testing</span>
+      <h2>AI in Automotive Testing: Hype, Help, and Where It Actually Fits</h2>
+      <div class="article-meta">
+        <span class="author"><span class="avatar">DK</span> Deepak Krishna</span>
+        <span class="dot">&bull;</span>
+        <span>July 14, 2026 &middot; 10:15 AM</span>
+        <span class="dot">&bull;</span>
+        <span>5 min read</span>
+      </div>
+      <p>AI is entering automotive testing fast, and the temptation is to treat it as a magic button. In reality, its value today is far more specific: generating first-draft test cases from requirements, triaging flaky tests, summarizing long diagnostic logs, and spotting anomalies in CAN traces or DTC patterns that a human might scroll straight past. Used this way, AI removes the tedium and lets engineers spend their time on the hard reasoning.</p>
+      <p>But automotive is safety-critical and heavily governed by standards like ASPICE, so blind trust is dangerous. An AI-generated test still needs traceability back to a requirement, a human review, and a clear rationale. I don't let a model decide whether a Body Control Module behaves safely&mdash;I let it accelerate the path to that judgment. The accountability stays with the engineer.</p>
+      <p>My view is simple: AI is a co-pilot, not the driver. The teams that win won't be the ones who replace testers with models, but the ones who pair experienced test engineers with AI to move faster without lowering the bar on rigor. In a domain where a missed edge case can put a vehicle at risk, that balance is everything.</p>
+    </article>
+
+    <!-- Post 2 -->
+    <article id="never-the-hot-seat" class="article">
+      <span class="tag tag-leadership">Leadership &amp; Mentorship</span>
+      <h2>Never Put a New Engineer in the Hot Seat</h2>
+      <div class="article-meta">
+        <span class="author"><span class="avatar">DK</span> Deepak Krishna</span>
+        <span class="dot">&bull;</span>
+        <span>May 19, 2026 &middot; 08:40 AM</span>
+        <span class="dot">&bull;</span>
+        <span>4 min read</span>
+      </div>
+      <p>Technical skills can be taught, but team dynamics and clear expectations must be built. When onboarding new engineers to complex embedded projects, I never put them in the "hot seat." Instead, I focus on building a connection first and breaking down highly complex system architectures into layman's terms.</p>
+      <p>I heavily emphasize documentation. By documenting my own onboarding process when I join a new project, I capture the "beginner's mindset"&mdash;the questions and confusions that experienced engineers forget they ever had. This lets me create onboarding paths that new joiners can actually relate to, setting clear expectations on how they will support the project from day one.</p>
+      <p>The goal isn't to prove how much I know; it's to make the next engineer effective as quickly and comfortably as possible. When people understand not just the "what" but the "why" of a system, they contribute with confidence&mdash;and that is what makes a team resilient.</p>
+    </article>
+
+    <!-- Post 3 -->
+    <article id="aspice-not-paperwork" class="article">
+      <span class="tag tag-process">Process &amp; ASPICE</span>
+      <h2>Why ASPICE Isn't Just Paperwork</h2>
+      <div class="article-meta">
+        <span class="author"><span class="avatar">DK</span> Deepak Krishna</span>
+        <span class="dot">&bull;</span>
+        <span>April 8, 2026 &middot; 05:30 PM</span>
+        <span class="dot">&bull;</span>
+        <span>4 min read</span>
+      </div>
+      <p>Ask most engineers about ASPICE and you'll hear a sigh&mdash;it's often seen as bureaucratic overhead that slows real work down. I used to think the same, until I saw what it actually buys you in day-to-day life: a clean thread of traceability from a requirement, to its test case, to the defect it uncovers, and back again. When something breaks, that thread tells you exactly what is affected and why.</p>
+      <p>That structure pays off constantly. It catches gaps early, when a requirement has no matching test. It makes audits and reviews calm instead of chaotic. And it makes onboarding dramatically easier, because a new engineer can follow the process to understand how a feature was verified without having to interrogate whoever wrote it. Process becomes the shared memory of the team.</p>
+      <p>The mindset shift for me was seeing ASPICE not as a blocker but as an enabler. Good process isn't about filling in documents to satisfy an assessor&mdash;it's about building work that is traceable, repeatable, and trustworthy. In a safety-critical domain, that discipline is not paperwork; it's the foundation everything else stands on.</p>
+    </article>
+
+    <!-- Post 4 -->
+    <article id="automation-is-a-product" class="article">
+      <span class="tag tag-automation">Automation</span>
+      <h2>Automation Is a Product, Not a Script</h2>
+      <div class="article-meta">
+        <span class="author"><span class="avatar">DK</span> Deepak Krishna</span>
+        <span class="dot">&bull;</span>
+        <span>February 23, 2026 &middot; 11:20 AM</span>
+        <span class="dot">&bull;</span>
+        <span>4 min read</span>
+      </div>
+      <p>The most common mistake I see in test automation is treating scripts as disposable&mdash;write it once, get a green result, move on. But an automation framework has users (your whole team), a lifecycle, and a maintenance cost. The moment you treat it as a product instead of a script, the way you design it changes completely.</p>
+      <p>That mindset is what led me to build modular test architectures. Instead of a separate script for every vehicle variant, I design a single dynamic test case that adapts to all of them. The value isn't in how many lines of automation you write&mdash;it's in how little you have to rewrite when requirements change. Maintainability, not line count, is the real return on investment.</p>
+      <p>A good framework should also be documented and approachable enough that a new engineer can extend it without fear. If only the author can maintain it, it isn't a product&mdash;it's a liability. Automation that scales is automation that an entire team can trust, understand, and build on.</p>
+    </article>
+
+    <!-- Post 5 -->
+    <article id="testing-over-development" class="article">
+      <span class="tag tag-testing">Testing</span>
+      <h2>Why I Chose Testing Over Development</h2>
+      <div class="article-meta">
+        <span class="author"><span class="avatar">DK</span> Deepak Krishna</span>
+        <span class="dot">&bull;</span>
+        <span>January 12, 2026 &middot; 09:30 AM</span>
+        <span class="dot">&bull;</span>
+        <span>3 min read</span>
+      </div>
+      <p>Early in my career I realized that the highest-leverage place I could stand wasn't writing a feature&mdash;it was guaranteeing that the whole system could be trusted. Development builds what a system should do; testing proves what it actually does under stress, at the edges, and in the conditions nobody planned for. That intersection is where I wanted to work.</p>
+      <p>Testing was a deliberate choice for me, not a fallback. It puts me across the entire system rather than a single component: the embedded logic, the communication buses, the diagnostics, and the physics of the hardware. In automotive systems, a missed edge case isn't just a bug ticket&mdash;it's a vehicle behaving unexpectedly. That responsibility is exactly what makes the work meaningful to me.</p>
+      <p>My philosophy is simple: test smarter, not just more. Anyone can add more test cases; the real engineering is in building frameworks that scale, unify environments, and turn complex requirements into automated, repeatable confidence. I'd rather design a system that makes an entire team's testing faster and more reliable than manually chase defects one at a time.</p>
+    </article>
+  </main>
+
+  <footer>
+    &copy; 2026 Deepak Krishna &middot; <a href="index.html#insights" style="color: var(--primary); text-decoration: none; font-weight: 600;">Back to Insights</a>
+  </footer>
+</body>
+</html>
